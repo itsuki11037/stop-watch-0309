@@ -18,15 +18,17 @@
             button.button.is-info(v-if='timerId != null' @click='recordLaptime') LAPTIME
 
     p LAP-TIME
-    p.laptime.time.columns.is-mobile.is-gapless(
-            v-for="laptime, i in laptimes" :key='i')
-        | {{ String(laptime.hour).padStart(2, '0') }}
-        | :
-        | {{ String(laptime.min).padStart(2, '0') }}
-        | :
-        | {{ String(laptime.sec).padStart(2, '0') }}
-        | :
-        | {{ String(laptime.msec).padStart(2, '0') }}
+        .lap-time-box
+            p.lap-times.columns.is-mobile(
+                v-for="laptime, i in laptimes" :key='i')
+                span.column.is-narrow {{ i + 1 }}:
+                span.column {{ String(laptime.hour) .padStart(2, '0') }}
+                span.column.is-narrow :
+                span.column {{ String(laptime.min) .padStart(2, '0') }}
+                span.column.is-narrow :
+                span.column {{ String(laptime.sec) .padStart(2, '0') }}
+                span.column.is-narrow :
+                span.column {{ String(laptime.msec) .padStart(2, '0') }}
 
 </template>
 
@@ -74,6 +76,7 @@ export default class StopWatch extends Vue implements Time {
         this.sec  = 0;
         this.min  = 0;
         this.hour = 0;
+        this.laptimes = [];
     }
 
     private recordLaptime(): void {
@@ -83,6 +86,7 @@ export default class StopWatch extends Vue implements Time {
             sec: this.sec,
             msec: this.msec
         });
+        console.log(this.laptimes);
     }
 
     private countup():void {
@@ -116,26 +120,32 @@ export default class StopWatch extends Vue implements Time {
     margin: 0 auto
 
     .time
-        margin: 16px auto
+        margin: 40px auto
 
         & > span
             text-align: center
             font-size: $size-1
 
     h1
-        font-size: 40px
-
-    @media screen and (max-width: $tablet)
-        .time > span
-            font-size: 8vw
-
-        button
-            font-size: 3vw
-
-
-    .laptime
+        nt-size: 40px
+    p
         font-size: $size-3
 
-    p
-        font-size: $size-4
+    .lap-time-box
+         max-width: 400px
+         max-height: 300px
+         overflow: scroll
+         margin: 0 auto
+
+    .lap-times
+         font-size: $size-3
+
+
+
+@media screen and (max-width: $tablet)
+    .time > span
+        font-size: 8vw
+
+    button
+        font-size: 3vw
 </style>
