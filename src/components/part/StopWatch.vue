@@ -11,11 +11,11 @@
 
     .columns.is-mobile.is-centered
         .column.is-narrow.alt
-            button.button.is-primary(v-if='timerId == null' @click='start') START
-            button.button.is-danger(v-if='timerId != null' @click='stop') STOP
+            button.button.is-primary.is-large(v-if='timerId == null' @click='start') START
+            button.button.is-danger.is-large(v-if='timerId != null' @click='stop') STOP
         .column.is-narrow.alt
-            button.button.is-warning(v-if='timerId == null' @click='reset') RESET
-            button.button.is-info(v-if='timerId != null' @click='recordLaptime') LAPTIME
+            button.button.is-warning.is-large(v-if='timerId == null' @click='reset') RESET
+            button.button.is-info.is-large(v-if='timerId != null' @click='recordLaptime') LAPTIME
 
     p LAP-TIME
         .lap-time-box
