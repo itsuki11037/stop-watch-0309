@@ -19,9 +19,10 @@
 
     p LAP-TIME
         .lap-time-box
-            p.lap-times.columns.is-mobile(
+            p.lap-times.columns.is-mobile.is-gapless(
                 v-for="laptime, i in laptimes" :key='i')
-                span.column.is-narrow {{ i + 1 }}:
+                span.column.is-narrow {{ i + 1 }}
+                span.column {{ }}
                 span.column {{ String(laptime.hour) .padStart(2, '0') }}
                 span.column.is-narrow :
                 span.column {{ String(laptime.min) .padStart(2, '0') }}
@@ -115,37 +116,45 @@ export default class StopWatch extends Vue implements Time {
 @import 'variable'
 
 .vue-stop-watch
-    max-width: 700px
+    max-width: 1000px
     width: 80%
     margin: 0 auto
 
     .time
-        margin: 40px auto
+        margin: 15px
 
         & > span
             text-align: center
-            font-size: $size-1
-
-    h1
-        nt-size: 40px
+            font-size: 150px
     p
         font-size: $size-3
 
     .lap-time-box
-         max-width: 400px
-         max-height: 300px
+         max-width: 500px
+         max-height: 240px
          overflow: scroll
          margin: 0 auto
 
+
     .lap-times
-         font-size: $size-3
+         width: 81%
+         text-align: center
+         font-size: 50px
+         margin: 0 auto
 
 
 
 @media screen and (max-width: $tablet)
-    .time > span
-        font-size: 8vw
+    .vue-stop-watch
+        .time
+            & > span
+                font-size: 15vw
 
-    button
-        font-size: 3vw
+
+        .lap-times
+            font-size: 7vw
+
+        button
+            font-size: 3vw
+
 </style>
