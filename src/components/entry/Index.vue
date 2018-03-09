@@ -41,4 +41,10 @@ export default class Index extends RootVue {
 .vue-index
     .container
         font-size: $size-2
+
+@media screen and (max-width: $tablet)
+    .vue-index
+        .container
+        p
+            font-size: 7vw
 </style>

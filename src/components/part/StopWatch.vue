@@ -87,7 +87,6 @@ export default class StopWatch extends Vue implements Time {
             sec: this.sec,
             msec: this.msec
         });
-        console.log(this.laptimes);
     }
 
     private countup():void {
@@ -116,7 +115,7 @@ export default class StopWatch extends Vue implements Time {
 @import 'variable'
 
 .vue-stop-watch
-    max-width: 1000px
+    max-width: 900px
     width: 80%
     margin: 0 auto
 
@@ -135,14 +134,11 @@ export default class StopWatch extends Vue implements Time {
          overflow: scroll
          margin: 0 auto
 
-
     .lap-times
          width: 81%
          text-align: center
          font-size: 50px
          margin: 0 auto
-
-
 
 @media screen and (max-width: $tablet)
     .vue-stop-watch
@@ -156,5 +152,6 @@ export default class StopWatch extends Vue implements Time {
 
         button
             font-size: 3vw
-
+        p
+            font-size: 5vw
 </style>
